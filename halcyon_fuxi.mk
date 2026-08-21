@@ -1,0 +1,41 @@
+#
+# Copyright (C) 2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Inherit common AOSP configurations
+$(call inherit-product, build/make/target/product/full_base_telephony.mk)
+$(call inherit-product, build/make/target/product/core_64_bit.mk)
+
+# Inherit device-specific configurations
+$(call inherit-product, device/xiaomi/fuxi/device.mk)
+
+# Inherit LineageOS configurations
+$(call inherit-product, vendor/halcyon/config/common_full_phone.mk)
+
+PRODUCT_DEVICE := fuxi
+PRODUCT_NAME := halcyon_fuxi
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := 2211133C
+PRODUCT_MANUFACTURER := Xiaomi
+
+PRODUCT_BRAND_FOR_ATTESTATION := $(PRODUCT_BRAND)
+PRODUCT_DEVICE_FOR_ATTESTATION := $(PRODUCT_DEVICE)
+PRODUCT_MODEL_FOR_ATTESTATION := $(PRODUCT_MODEL)
+PRODUCT_NAME_FOR_ATTESTATION := fuxi_global
+PRODUCT_MANUFACTURER_FOR_ATTESTATION := $(PRODUCT_MANUFACTURER)
+
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_INCLUDES_OEM_APP := true
+TARGET_INCLUDES_DolbyVision := true
+TARGET_DISABLE_EPPE := true
+TARGET_OPTIMIZED_DEXOPT := true
+TARGET_ENABLE_BLUR := true
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DeviceProduct=$(PRODUCT_SYSTEM_NAME) \
+    DeviceName=$(PRODUCT_SYSTEM_DEVICE)
+
+BUILD_FINGERPRINT := Xiaomi/fuxi/fuxi:16/BP2A.250605.031.A3/OS3.0.2.0.WMCCNXM:user/release-keys
